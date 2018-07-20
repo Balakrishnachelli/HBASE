@@ -1,0 +1,314 @@
+HBASE BULK UPLOADING - FOR RETAIL DOMAIN-USECASE
+--------------------------------------------------
+TABLE CREATION - WITHOUT DATA
+------------------------------
+
+hbase(main):002:0> create 'retailtab','rtl_name','vert_name','prod_name','list_price','sale_price','discount_price','type_of_prod'
+0 row(s) in 3.3310 seconds
+
+hbase(main):003:0>
+-----------------------------------------------------------------------------
+BULD LOADING COMMAND  WITH ".csv" file
+-----------------------------------------------------------------------------
+root@ubuntu:/home# hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=, -Dimporttsv.columns=HBASE_ROW_KEY,rtl_name,vert_name,prod_name,list_price,sale_price,discount_price,type_of_prod retailtab hdfs://localhost:8020/RetailInputDir/RetailData.csv
+-----------------------------------------------------------------------------
+TRACE
+---------------------------------------------------------------------------------
+root@ubuntu:/home# hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=, -Dimporttsv.columns=HBASE_ROW_KEY,rtl_name,vert_name,prod_name,list_price,sale_price,discount_price,type_of_prod retailtab hdfs://localhost:8020/RetailInputDir/RetailData.csv
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:zookeeper.version=3.3.5-cdh3u5--1, built on 10/06/2012 01:52 GMT
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:host.name=ubuntu
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.version=1.6.0_26
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.vendor=Sun Microsystems Inc.
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.home=/usr/java/jdk1.6.0_26/jre
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.class.path=/usr/lib/hbase/bin/../conf:/usr/java/jdk1.6.0_26/lib/tools.jar:/usr/lib/hbase/bin/..:/usr/lib/hbase/bin/../hbase-0.90.6-cdh3u5.jar:/usr/lib/hbase/bin/../hbase-0.90.6-cdh3u5-tests.jar:/usr/lib/hbase/bin/../hbase.jar:/usr/lib/hbase/bin/../lib/activation-1.1.jar:/usr/lib/hbase/bin/../lib/asm-3.2.jar:/usr/lib/hbase/bin/../lib/avro-1.5.4.jar:/usr/lib/hbase/bin/../lib/avro-ipc-1.5.4.jar:/usr/lib/hbase/bin/../lib/commons-cli-1.2.jar:/usr/lib/hbase/bin/../lib/commons-codec-1.4.jar:/usr/lib/hbase/bin/../lib/commons-el-1.0.jar:/usr/lib/hbase/bin/../lib/commons-httpclient-3.1.jar:/usr/lib/hbase/bin/../lib/commons-io-2.1.jar:/usr/lib/hbase/bin/../lib/commons-lang-2.5.jar:/usr/lib/hbase/bin/../lib/commons-logging-1.1.1.jar:/usr/lib/hbase/bin/../lib/commons-net-1.4.1.jar:/usr/lib/hbase/bin/../lib/core-3.1.1.jar:/usr/lib/hbase/bin/../lib/guava-r06.jar:/usr/lib/hbase/bin/../lib/guava-r09-jarjar.jar:/usr/lib/hbase/bin/../lib/hadoop-core.jar:/usr/lib/hbase/bin/../lib/hbase-0.90.2.jar:/usr/lib/hbase/bin/../lib/jackson-core-asl-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-jaxrs-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-mapper-asl-1.8.8.jar:/usr/lib/hbase/bin/../lib/jackson-xc-1.8.8.jar:/usr/lib/hbase/bin/../lib/jamon-runtime-2.3.1.jar:/usr/lib/hbase/bin/../lib/jasper-compiler-5.5.23.jar:/usr/lib/hbase/bin/../lib/jasper-runtime-5.5.23.jar:/usr/lib/hbase/bin/../lib/jaxb-api-2.1.jar:/usr/lib/hbase/bin/../lib/jaxb-impl-2.2.3-1.jar:/usr/lib/hbase/bin/../lib/jersey-core-1.8.jar:/usr/lib/hbase/bin/../lib/jersey-json-1.8.jar:/usr/lib/hbase/bin/../lib/jersey-server-1.8.jar:/usr/lib/hbase/bin/../lib/jettison-1.1.jar:/usr/lib/hbase/bin/../lib/jetty-6.1.26.jar:/usr/lib/hbase/bin/../lib/jetty-util-6.1.26.jar:/usr/lib/hbase/bin/../lib/jruby-complete-1.6.0.jar:/usr/lib/hbase/bin/../lib/jsp-2.1-6.1.14.jar:/usr/lib/hbase/bin/../lib/jsp-api-2.1-6.1.14.jar:/usr/lib/hbase/bin/../lib/jsp-api-2.1.jar:/usr/lib/hbase/bin/../lib/jsr311-api-1.1.1.jar:/usr/lib/hbase/bin/../lib/log4j-1.2.16.jar:/usr/lib/hbase/bin/../lib/netty-3.2.4.Final.jar:/usr/lib/hbase/bin/../lib/protobuf-java-2.3.0.jar:/usr/lib/hbase/bin/../lib/servlet-api-2.5-6.1.14.jar:/usr/lib/hbase/bin/../lib/servlet-api-2.5.jar:/usr/lib/hbase/bin/../lib/slf4j-api-1.5.8.jar:/usr/lib/hbase/bin/../lib/slf4j-log4j12-1.5.8.jar:/usr/lib/hbase/bin/../lib/snappy-java-1.0.3.2.jar:/usr/lib/hbase/bin/../lib/stax-api-1.0.1.jar:/usr/lib/hbase/bin/../lib/thrift-0.2.0.jar:/usr/lib/hbase/bin/../lib/velocity-1.5.jar:/usr/lib/hbase/bin/../lib/xmlenc-0.52.jar:/usr/lib/hbase/bin/../lib/zookeeper.jar:/etc/zookeeper:/etc/hadoop-0.20/conf:/usr/lib/hadoop-0.20/hadoop-tools-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/hadoop-core-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/hadoop-ant-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/hadoop-0.20.2-cdh3u5-core.jar:/usr/lib/hadoop-0.20/hadoop-test.jar:/usr/lib/hadoop-0.20/hadoop-test-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/hadoop-ant.jar:/usr/lib/hadoop-0.20/hadoop-tools.jar:/usr/lib/hadoop-0.20/hadoop-0.20.2-cdh3u5-ant.jar:/usr/lib/hadoop-0.20/hadoop-0.20.2-cdh3u5-tools.jar:/usr/lib/hadoop-0.20/hadoop-examples-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/hadoop-0.20.2-cdh3u5-test.jar:/usr/lib/hadoop-0.20/hadoop-core.jar:/usr/lib/hadoop-0.20/hadoop-0.20.2-cdh3u5-examples.jar:/usr/lib/hadoop-0.20/hadoop-examples.jar:/usr/lib/hadoop-0.20/lib/hsqldb-1.8.0.10.jar:/usr/lib/hadoop-0.20/lib/jetty-util-6.1.26.cloudera.1.jar:/usr/lib/hadoop-0.20/lib/jsch-0.1.42.jar:/usr/lib/hadoop-0.20/lib/jetty-6.1.26.cloudera.1.jar:/usr/lib/hadoop-0.20/lib/jets3t-0.6.1.jar:/usr/lib/hadoop-0.20/lib/aspectjrt-1.6.5.jar:/usr/lib/hadoop-0.20/lib/core-3.1.1.jar:/usr/lib/hadoop-0.20/lib/commons-el-1.0.jar:/usr/lib/hadoop-0.20/lib/xmlenc-0.52.jar:/usr/lib/hadoop-0.20/lib/commons-daemon-1.0.1.jar:/usr/lib/hadoop-0.20/lib/guava-r09-jarjar.jar:/usr/lib/hadoop-0.20/lib/commons-net-3.1.jar:/usr/lib/hadoop-0.20/lib/servlet-api-2.5-6.1.14.jar:/usr/lib/hadoop-0.20/lib/hadoop-core-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/lib/pdfbox-app-1.8.10.jar:/usr/lib/hadoop-0.20/lib/aspectjtools-1.6.5.jar:/usr/lib/hadoop-0.20/lib/jersey-server-1.8.jar:/usr/lib/hadoop-0.20/lib/commons-cli-1.2.jar:/usr/lib/hadoop-0.20/lib/slf4j-api-1.4.3.jar:/usr/lib/hadoop-0.20/lib/commons-lang-2.4.jar:/usr/lib/hadoop-0.20/lib/commons-io-2.1.jar:/usr/lib/hadoop-0.20/lib/jetty-servlet-tester-6.1.26.cloudera.1.jar:/usr/lib/hadoop-0.20/lib/servlet-api-2.5-20081211.jar:/usr/lib/hadoop-0.20/lib/jackson-mapper-asl-1.5.2.jar:/usr/lib/hadoop-0.20/lib/commons-httpclient-3.1.jar:/usr/lib/hadoop-0.20/lib/asm-3.2.jar:/usr/lib/hadoop-0.20/lib/mockito-all-1.8.2.jar:/usr/lib/hadoop-0.20/lib/commons-codec-1.4.jar:/usr/lib/hadoop-0.20/lib/fontbox-1.6.0-for-pdfbox.jar:/usr/lib/hadoop-0.20/lib/junit-4.5.jar:/usr/lib/hadoop-0.20/lib/commons-logging-1.0.4.jar:/usr/lib/hadoop-0.20/lib/kfs-0.2.2.jar:/usr/lib/hadoop-0.20/lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hadoop-0.20/lib/jersey-json-1.8.jar:/usr/lib/hadoop-0.20/lib/log4j-1.2.15.jar:/usr/lib/hadoop-0.20/lib/commons-logging-api-1.0.4.jar:/usr/lib/hadoop-0.20/lib/jersey-core-1.8.jar:/usr/lib/hadoop-0.20/lib/jasper-runtime-5.5.12.jar:/usr/lib/hadoop-0.20/lib/ant-contrib-1.0b3.jar:/usr/lib/hadoop-0.20/lib/jackson-core-asl-1.5.2.jar:/usr/lib/hadoop-0.20/lib/jasper-compiler-5.5.12.jar:/usr/lib/hadoop-0.20/lib/oro-2.0.8.jar:/usr/lib/hadoop-0.20/lib/hadoop-fairscheduler-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/lib/org-apache-commons-logging.jar:/usr/lib/zookeeper/zookeeper.jar:/usr/lib/zookeeper/zookeeper-3.3.5-cdh3u5.jar:/usr/lib/zookeeper/lib/jline-0.9.94.jar:/usr/lib/zookeeper/lib/log4j-1.2.15.jar::/usr/lib/hadoop-0.20/conf:/usr/lib/hadoop-0.20/hadoop-core-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/lib/ant-contrib-1.0b3.jar:/usr/lib/hadoop-0.20/lib/asm-3.2.jar:/usr/lib/hadoop-0.20/lib/aspectjrt-1.6.5.jar:/usr/lib/hadoop-0.20/lib/aspectjtools-1.6.5.jar:/usr/lib/hadoop-0.20/lib/commons-cli-1.2.jar:/usr/lib/hadoop-0.20/lib/commons-codec-1.4.jar:/usr/lib/hadoop-0.20/lib/commons-daemon-1.0.1.jar:/usr/lib/hadoop-0.20/lib/commons-el-1.0.jar:/usr/lib/hadoop-0.20/lib/commons-httpclient-3.1.jar:/usr/lib/hadoop-0.20/lib/commons-io-2.1.jar:/usr/lib/hadoop-0.20/lib/commons-lang-2.4.jar:/usr/lib/hadoop-0.20/lib/commons-logging-1.0.4.jar:/usr/lib/hadoop-0.20/lib/commons-logging-api-1.0.4.jar:/usr/lib/hadoop-0.20/lib/commons-net-3.1.jar:/usr/lib/hadoop-0.20/lib/core-3.1.1.jar:/usr/lib/hadoop-0.20/lib/fontbox-1.6.0-for-pdfbox.jar:/usr/lib/hadoop-0.20/lib/guava-r09-jarjar.jar:/usr/lib/hadoop-0.20/lib/hadoop-core-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/lib/hadoop-fairscheduler-0.20.2-cdh3u5.jar:/usr/lib/hadoop-0.20/lib/hsqldb-1.8.0.10.jar:/usr/lib/hadoop-0.20/lib/jackson-core-asl-1.5.2.jar:/usr/lib/hadoop-0.20/lib/jackson-mapper-asl-1.5.2.jar:/usr/lib/hadoop-0.20/lib/jasper-compiler-5.5.12.jar:/usr/lib/hadoop-0.20/lib/jasper-runtime-5.5.12.jar:/usr/lib/hadoop-0.20/lib/jersey-core-1.8.jar:/usr/lib/hadoop-0.20/lib/jersey-json-1.8.jar:/usr/lib/hadoop-0.20/lib/jersey-server-1.8.jar:/usr/lib/hadoop-0.20/lib/jets3t-0.6.1.jar:/usr/lib/hadoop-0.20/lib/jetty-6.1.26.cloudera.1.jar:/usr/lib/hadoop-0.20/lib/jetty-servlet-tester-6.1.26.cloudera.1.jar:/usr/lib/hadoop-0.20/lib/jetty-util-6.1.26.cloudera.1.jar:/usr/lib/hadoop-0.20/lib/jsch-0.1.42.jar:/usr/lib/hadoop-0.20/lib/junit-4.5.jar:/usr/lib/hadoop-0.20/lib/kfs-0.2.2.jar:/usr/lib/hadoop-0.20/lib/log4j-1.2.15.jar:/usr/lib/hadoop-0.20/lib/mockito-all-1.8.2.jar:/usr/lib/hadoop-0.20/lib/org-apache-commons-logging.jar:/usr/lib/hadoop-0.20/lib/oro-2.0.8.jar:/usr/lib/hadoop-0.20/lib/pdfbox-app-1.8.10.jar:/usr/lib/hadoop-0.20/lib/servlet-api-2.5-20081211.jar:/usr/lib/hadoop-0.20/lib/servlet-api-2.5-6.1.14.jar:/usr/lib/hadoop-0.20/lib/slf4j-api-1.4.3.jar:/usr/lib/hadoop-0.20/lib/slf4j-log4j12-1.4.3.jar:/usr/lib/hadoop-0.20/lib/xmlenc-0.52.jar
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.library.path=/usr/lib/hadoop-0.20/lib/native/Linux-i386-32:/usr/lib/hbase/bin/../lib/native/Linux-i386-32
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:os.name=Linux
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:os.arch=i386
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:os.version=2.6.35-19-generic
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:user.name=root
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:user.home=/root
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Client environment:user.dir=/home
+17/03/08 04:11:30 INFO zookeeper.ZooKeeper: Initiating client connection, connectString=localhost:2181 sessionTimeout=180000 watcher=hconnection
+17/03/08 04:11:31 INFO zookeeper.ClientCnxn: Opening socket connection to server localhost/127.0.0.1:2181
+17/03/08 04:11:31 INFO zookeeper.ClientCnxn: Socket connection established to localhost/127.0.0.1:2181, initiating session
+17/03/08 04:11:31 INFO zookeeper.ClientCnxn: Session establishment complete on server localhost/127.0.0.1:2181, sessionid = 0x15aada318650009, negotiated timeout = 40000
+17/03/08 04:11:31 DEBUG client.HConnectionManager$HConnectionImplementation: Lookedup root region location, connection=org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation@b1a4e2; hsa=ubuntu:45369
+17/03/08 04:11:31 DEBUG client.HConnectionManager$HConnectionImplementation: Cached location for .META.,,1.1028785192 is ubuntu:45369
+17/03/08 04:11:31 DEBUG client.HConnectionManager$HConnectionImplementation: The connection to hconnection-0x15aada318650009 has been closed.
+17/03/08 04:11:31 DEBUG client.MetaScanner: Scanning .META. starting at row=retailtab,,00000000000000 for max=10 rows
+17/03/08 04:11:31 DEBUG client.HConnectionManager$HConnectionImplementation: Cached location for retailtab,,1488974729281.4b6d5c0e2c9dc70152afca4c7922cf0e. is ubuntu:45369
+17/03/08 04:11:31 DEBUG client.HConnectionManager$HConnectionImplementation: The connection to hconnection-0x15aada318650009 has been closed.
+17/03/08 04:11:31 INFO mapreduce.TableOutputFormat: Created table instance for retailtab
+17/03/08 04:11:31 INFO input.FileInputFormat: Total input paths to process : 1
+17/03/08 04:11:31 WARN snappy.LoadSnappy: Snappy native library is available
+17/03/08 04:11:31 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+17/03/08 04:11:31 INFO snappy.LoadSnappy: Snappy native library loaded
+17/03/08 04:11:32 INFO mapred.JobClient: Running job: job_201703080302_0002
+17/03/08 04:11:33 INFO mapred.JobClient:  map 0% reduce 0%
+17/03/08 04:11:48 INFO mapred.JobClient:  map 100% reduce 0%
+17/03/08 04:11:51 INFO mapred.JobClient: Job complete: job_201703080302_0002
+17/03/08 04:11:51 INFO mapred.JobClient: Counters: 17
+17/03/08 04:11:51 INFO mapred.JobClient:   Job Counters 
+17/03/08 04:11:51 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=15039
+17/03/08 04:11:51 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+17/03/08 04:11:51 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+17/03/08 04:11:51 INFO mapred.JobClient:     Launched map tasks=1
+17/03/08 04:11:51 INFO mapred.JobClient:     Data-local map tasks=1
+17/03/08 04:11:51 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=0
+17/03/08 04:11:51 INFO mapred.JobClient:   ImportTsv
+17/03/08 04:11:51 INFO mapred.JobClient:     Bad Lines=0
+17/03/08 04:11:51 INFO mapred.JobClient:   FileSystemCounters
+17/03/08 04:11:51 INFO mapred.JobClient:     HDFS_BYTES_READ=1580
+17/03/08 04:11:51 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=78504
+17/03/08 04:11:51 INFO mapred.JobClient:   Map-Reduce Framework
+17/03/08 04:11:51 INFO mapred.JobClient:     Map input records=24
+17/03/08 04:11:51 INFO mapred.JobClient:     Physical memory (bytes) snapshot=136978432
+17/03/08 04:11:51 INFO mapred.JobClient:     Spilled Records=0
+17/03/08 04:11:51 INFO mapred.JobClient:     CPU time spent (ms)=400
+17/03/08 04:11:51 INFO mapred.JobClient:     Total committed heap usage (bytes)=39911424
+17/03/08 04:11:51 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=459661312
+17/03/08 04:11:51 INFO mapred.JobClient:     Map output records=24
+17/03/08 04:11:51 INFO mapred.JobClient:     SPLIT_RAW_BYTES=116
+root@ubuntu:/home# 
+------------------------------------------------------------------------------------
+AFTER BULK LOAD - TABLE DATA
+-----------------------------------------------------------------------------------
+hbase(main):003:0> scan 'retailtab'
+ROW                    COLUMN+CELL                                                  
+ 10001                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 10001                 column=list_price:, timestamp=1488975106200, value=$120      
+ 10001                 column=prod_name:, timestamp=1488975106200, value=fictionstor
+                       ies                                                          
+ 10001                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 10001                 column=sale_price:, timestamp=1488975106200, value=$108      
+ 10001                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 10001                 column=vert_name:, timestamp=1488975106200, value=Books      
+ 10201                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 10201                 column=list_price:, timestamp=1488975106200, value=$120      
+ 10201                 column=prod_name:, timestamp=1488975106200, value=fictionstor
+                       ies                                                          
+ 10201                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 10201                 column=sale_price:, timestamp=1488975106200, value=$108      
+ 10201                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 10201                 column=vert_name:, timestamp=1488975106200, value=Books      
+ 10555                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 10555                 column=list_price:, timestamp=1488975106200, value=$800      
+ 10555                 column=prod_name:, timestamp=1488975106200, value=VideoGames 
+ 10555                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 10555                 column=sale_price:, timestamp=1488975106200, value=$720      
+ 10555                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 10555                 column=vert_name:, timestamp=1488975106200, value=HomeElectro
+                       nics                                                         
+ 20201                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 20201                 column=list_price:, timestamp=1488975106200, value=$120      
+ 20201                 column=prod_name:, timestamp=1488975106200, value=fictionstor
+                       ies                                                          
+ 20201                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 20201                 column=sale_price:, timestamp=1488975106200, value=$108      
+ 20201                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 20201                 column=vert_name:, timestamp=1488975106200, value=Books      
+ 22222                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 22222                 column=list_price:, timestamp=1488975106200, value=$40       
+ 22222                 column=prod_name:, timestamp=1488975106200, value=beatycream 
+ 22222                 column=rtl_name:, timestamp=1488975106200, value=Macy's      
+ 22222                 column=sale_price:, timestamp=1488975106200, value=$30       
+ 22222                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 22222                 column=vert_name:, timestamp=1488975106200, value=Health&Weln
+                       ess                                                          
+ 32101                 column=discount_price:, timestamp=1488975106200, value=$5    
+ 32101                 column=list_price:, timestamp=1488975106200, value=$30       
+ 32101                 column=prod_name:, timestamp=1488975106200, value=babysoap   
+ 32101                 column=rtl_name:, timestamp=1488975106200, value=Bestbuy     
+ 32101                 column=sale_price:, timestamp=1488975106200, value=$25       
+ 32101                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 32101                 column=vert_name:, timestamp=1488975106200, value=babyproduct
+                       s                                                            
+ 33101                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 33101                 column=list_price:, timestamp=1488975106200, value=$800      
+ 33101                 column=prod_name:, timestamp=1488975106200, value=VideoGames 
+ 33101                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 33101                 column=sale_price:, timestamp=1488975106200, value=$720      
+ 33101                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 33101                 column=vert_name:, timestamp=1488975106200, value=HomeElectro
+                       nics                                                         
+ 40101                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 40101                 column=list_price:, timestamp=1488975106200, value=$20       
+ 40101                 column=prod_name:, timestamp=1488975106200, value=dishwash   
+ 40101                 column=rtl_name:, timestamp=1488975106200, value=Lowes       
+ 40101                 column=sale_price:, timestamp=1488975106200, value=$10       
+ 40101                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 40101                 column=vert_name:, timestamp=1488975106200, value=kitchenAcc 
+ 45111                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 45111                 column=list_price:, timestamp=1488975106200, value=$40       
+ 45111                 column=prod_name:, timestamp=1488975106200, value=beatycream 
+ 45111                 column=rtl_name:, timestamp=1488975106200, value=Macy's      
+ 45111                 column=sale_price:, timestamp=1488975106200, value=$30       
+ 45111                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 45111                 column=vert_name:, timestamp=1488975106200, value=Health&Weln
+                       ess                                                          
+ 45444                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 45444                 column=list_price:, timestamp=1488975106200, value=$800      
+ 45444                 column=prod_name:, timestamp=1488975106200, value=VideoGames 
+ 45444                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 45444                 column=sale_price:, timestamp=1488975106200, value=$720      
+ 45444                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 45444                 column=vert_name:, timestamp=1488975106200, value=HomeElectro
+                       nics                                                         
+ 54566                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 54566                 column=list_price:, timestamp=1488975106200, value=$40       
+ 54566                 column=prod_name:, timestamp=1488975106200, value=beatycream 
+ 54566                 column=rtl_name:, timestamp=1488975106200, value=Macy's      
+ 54566                 column=sale_price:, timestamp=1488975106200, value=$30       
+ 54566                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 54566                 column=vert_name:, timestamp=1488975106200, value=Health&Weln
+                       ess                                                          
+ 60111                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 60111                 column=list_price:, timestamp=1488975106200, value=$40       
+ 60111                 column=prod_name:, timestamp=1488975106200, value=beatycream 
+ 60111                 column=rtl_name:, timestamp=1488975106200, value=Macy's      
+ 60111                 column=sale_price:, timestamp=1488975106200, value=$30       
+ 60111                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 60111                 column=vert_name:, timestamp=1488975106200, value=Health&Weln
+                       ess                                                          
+ 67777                 column=discount_price:, timestamp=1488975106200, value=$20   
+ 67777                 column=list_price:, timestamp=1488975106200, value=$500      
+ 67777                 column=prod_name:, timestamp=1488975106200, value=Mahinery   
+ 67777                 column=rtl_name:, timestamp=1488975106200, value=Target      
+ 67777                 column=sale_price:, timestamp=1488975106200, value=$400      
+ 67777                 column=type_of_prod:, timestamp=1488975106200, value=SeedCraw
+                       lProduct                                                     
+ 67777                 column=vert_name:, timestamp=1488975106200, value=GardingGlov
+                       es                                                           
+ 70111                 column=discount_price:, timestamp=1488975106200, value=$20   
+ 70111                 column=list_price:, timestamp=1488975106200, value=$500      
+ 70111                 column=prod_name:, timestamp=1488975106200, value=Mahinery   
+ 70111                 column=rtl_name:, timestamp=1488975106200, value=Target      
+ 70111                 column=sale_price:, timestamp=1488975106200, value=$400      
+ 70111                 column=type_of_prod:, timestamp=1488975106200, value=SeedCraw
+                       lProduct                                                     
+ 70111                 column=vert_name:, timestamp=1488975106200, value=GardingGlov
+                       es                                                           
+ 76111                 column=discount_price:, timestamp=1488975106200, value=$20   
+ 76111                 column=list_price:, timestamp=1488975106200, value=$500      
+ 76111                 column=prod_name:, timestamp=1488975106200, value=Mahinery   
+ 76111                 column=rtl_name:, timestamp=1488975106200, value=Target      
+ 76111                 column=sale_price:, timestamp=1488975106200, value=$400      
+ 76111                 column=type_of_prod:, timestamp=1488975106200, value=SeedCraw
+                       lProduct                                                     
+ 76111                 column=vert_name:, timestamp=1488975106200, value=GardingGlov
+                       es                                                           
+ 87776                 column=discount_price:, timestamp=1488975106200, value=$5    
+ 87776                 column=list_price:, timestamp=1488975106200, value=$30       
+ 87776                 column=prod_name:, timestamp=1488975106200, value=babysoap   
+ 87776                 column=rtl_name:, timestamp=1488975106200, value=Bestbuy     
+ 87776                 column=sale_price:, timestamp=1488975106200, value=$25       
+ 87776                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 87776                 column=vert_name:, timestamp=1488975106200, value=babyproduct
+                       s                                                            
+ 87879                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 87879                 column=list_price:, timestamp=1488975106200, value=$120      
+ 87879                 column=prod_name:, timestamp=1488975106200, value=fictionstor
+                       ies                                                          
+ 87879                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 87879                 column=sale_price:, timestamp=1488975106200, value=$108      
+ 87879                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 87879                 column=vert_name:, timestamp=1488975106200, value=Books      
+ 88888                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 88888                 column=list_price:, timestamp=1488975106200, value=$800      
+ 88888                 column=prod_name:, timestamp=1488975106200, value=VideoGames 
+ 88888                 column=rtl_name:, timestamp=1488975106200, value=Amazon      
+ 88888                 column=sale_price:, timestamp=1488975106200, value=$720      
+ 88888                 column=type_of_prod:, timestamp=1488975106200, value=BestSell
+                       er                                                           
+ 88888                 column=vert_name:, timestamp=1488975106200, value=HomeElectro
+                       nics                                                         
+ 89101                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 89101                 column=list_price:, timestamp=1488975106200, value=$20       
+ 89101                 column=prod_name:, timestamp=1488975106200, value=dishwash   
+ 89101                 column=rtl_name:, timestamp=1488975106200, value=Lowes       
+ 89101                 column=sale_price:, timestamp=1488975106200, value=$10       
+ 89101                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 89101                 column=vert_name:, timestamp=1488975106200, value=kitchenAcc 
+ 89733                 column=discount_price:, timestamp=1488975106200, value=$5    
+ 89733                 column=list_price:, timestamp=1488975106200, value=$30       
+ 89733                 column=prod_name:, timestamp=1488975106200, value=babysoap   
+ 89733                 column=rtl_name:, timestamp=1488975106200, value=Bestbuy     
+ 89733                 column=sale_price:, timestamp=1488975106200, value=$25       
+ 89733                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 89733                 column=vert_name:, timestamp=1488975106200, value=babyproduct
+                       s                                                            
+ 90788                 column=discount_price:, timestamp=1488975106200, value=$5    
+ 90788                 column=list_price:, timestamp=1488975106200, value=$30       
+ 90788                 column=prod_name:, timestamp=1488975106200, value=babysoap   
+ 90788                 column=rtl_name:, timestamp=1488975106200, value=Bestbuy     
+ 90788                 column=sale_price:, timestamp=1488975106200, value=$25       
+ 90788                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 90788                 column=vert_name:, timestamp=1488975106200, value=babyproduct
+                       s                                                            
+ 90909                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 90909                 column=list_price:, timestamp=1488975106200, value=$20       
+ 90909                 column=prod_name:, timestamp=1488975106200, value=dishwash   
+ 90909                 column=rtl_name:, timestamp=1488975106200, value=Lowes       
+ 90909                 column=sale_price:, timestamp=1488975106200, value=$10       
+ 90909                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 90909                 column=vert_name:, timestamp=1488975106200, value=kitchenAcc 
+ 98742                 column=discount_price:, timestamp=1488975106200, value=$10   
+ 98742                 column=list_price:, timestamp=1488975106200, value=$20       
+ 98742                 column=prod_name:, timestamp=1488975106200, value=dishwash   
+ 98742                 column=rtl_name:, timestamp=1488975106200, value=Lowes       
+ 98742                 column=sale_price:, timestamp=1488975106200, value=$10       
+ 98742                 column=type_of_prod:, timestamp=1488975106200, value=odcprodu
+                       ct                                                           
+ 98742                 column=vert_name:, timestamp=1488975106200, value=kitchenAcc 
+23 row(s) in 1.1670 seconds
+
+hbase(main):004:0> 
+---------------------------------------------------------------------------------
+FROM HDFS SIDE - INPUT DATA
+--------------------------------------------------------------------------------
+root@ubuntu:/home# hadoop fs -cat /RetailInputDir/RetailData.csv10555,Amazon,HomeElectronics,VideoGames,$800,$720,$10,BestSeller
+89733,Bestbuy,babyproducts,babysoap,$30,$25,$5,odcproduct
+98742,Lowes,kitchenAcc,dishwash,$20,$10,$10,odcproduct
+10001,Amazon,Books,fictionstories,$120,$108,$10,BestSeller
+45111,Target,GardingGloves,Mahinery,$500,$400,$20,SeedCrawlProduct
+22222,Macy's,Health&Welness,beatycream,$40,$30,$10,odcproduct
+45444,Amazon,HomeElectronics,VideoGames,$800,$720,$10,BestSeller
+87776,Bestbuy,babyproducts,babysoap,$30,$25,$5,odcproduct
+90909,Lowes,kitchenAcc,dishwash,$20,$10,$10,odcproduct
+87879,Amazon,Books,fictionstories,$120,$108,$10,BestSeller
+67777,Target,GardingGloves,Mahinery,$500,$400,$20,SeedCrawlProduct
+54566,Macy's,Health&Welness,beatycream,$40,$30,$10,odcproduct
+88888,Amazon,HomeElectronics,VideoGames,$800,$720,$10,BestSeller
+90788,Bestbuy,babyproducts,babysoap,$30,$25,$5,odcproduct
+89101,Lowes,kitchenAcc,dishwash,$20,$10,$10,odcproduct
+10201,Amazon,Books,fictionstories,$120,$108,$10,BestSeller
+76111,Target,GardingGloves,Mahinery,$500,$400,$20,SeedCrawlProduct
+45111,Macy's,Health&Welness,beatycream,$40,$30,$10,odcproduct
+33101,Amazon,HomeElectronics,VideoGames,$800,$720,$10,BestSeller
+32101,Bestbuy,babyproducts,babysoap,$30,$25,$5,odcproduct
+40101,Lowes,kitchenAcc,dishwash,$20,$10,$10,odcproduct
+20201,Amazon,Books,fictionstories,$120,$108,$10,BestSeller
+70111,Target,GardingGloves,Mahinery,$500,$400,$20,SeedCrawlProduct
+60111,Macy's,Health&Welness,beatycream,$40,$30,$10,odcproduct
+root@ubuntu:/home# 
+
